@@ -2,7 +2,7 @@
 # Run homework.
 homework-i-run:
 	@make init-dev
-	@python manage.py runserver
+	@python3 manage.py runserver
 
 .PHONY: homework-i-purge
 # Delete all created artifacts, related with homework execution
