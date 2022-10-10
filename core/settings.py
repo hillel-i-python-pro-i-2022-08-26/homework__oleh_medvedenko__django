@@ -39,7 +39,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-LOCAL_APPS = ["apps.base.apps.DjangoTaskConfig", "apps.base.services"]
+LOCAL_APPS = ["apps.base.apps.DjangoTaskConfig", "apps.users.services"]
 
 THIRD_PARTY_APPS = []
 
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "apps.base.apps.DjangoTaskConfig",
+    "apps.users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
