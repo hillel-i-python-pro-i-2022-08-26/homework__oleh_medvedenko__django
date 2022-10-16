@@ -11,7 +11,7 @@ def users_info(request: HttpRequest, args) -> HttpResponse:
     amount = args["amount"]
     return render(
         request,
-        "index.html",
+        "users.html",
         {
             "userinfo": organize_info(amount=amount),
         },
