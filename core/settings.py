@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "admin_user.CustomUser"
+
 # Application definition
 
 DJANGO_APPS = [
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     "apps.contacts",
     "apps.users",
     "apps.base",
+    "apps.admin_user",
 ]
 
 MIDDLEWARE = [

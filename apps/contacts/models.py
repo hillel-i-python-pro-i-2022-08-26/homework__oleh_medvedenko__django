@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Group(models.Model):
@@ -29,7 +30,14 @@ class Contacts(models.Model):
         null=True,
     )
 
-    def __str__(self) -> list[str]:
-        return f"{self.name}{self.phone_number}{self.birthday}{self.creation_date}{self.edition_date}".splitlines()
+    def get_absolute_url(self):
+        return reverse("post", kwargs={"post_id": self.pk})
+
+    class Meta:
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
+
+    def __str__(self) -> str:
+        return "\n".join(f"{self.name}{self.phone_number}{self.birthday}{self.creation_date}{self.edition_date}")
 
     __repr__ = __str__
