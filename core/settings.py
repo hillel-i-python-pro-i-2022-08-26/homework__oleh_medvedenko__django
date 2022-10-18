@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.base",
     "apps.admin_user",
+    "apps.sessions_app",
 ]
 
 MIDDLEWARE = [
