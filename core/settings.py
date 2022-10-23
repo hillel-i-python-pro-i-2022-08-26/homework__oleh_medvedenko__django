@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "admin_user.CustomUser"
+
 # Application definition
 
 DJANGO_APPS = [
@@ -38,13 +40,24 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-LOCAL_APPS = [
-    "apps.base.apps.DjangoTaskConfig",
-]
+LOCAL_APPS = ["apps.base.apps.DjangoTaskConfig", "apps.users.services"]
 
 THIRD_PARTY_APPS = []
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "apps.contacts",
+    "apps.users",
+    "apps.base",
+    "apps.admin_user",
+    "apps.sessions_app",
+    "crispy_forms",
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -124,3 +137,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    {% for contact in contacts %}
+        <p>Name: {{ contact.name }}.</p>
+        <p>Number: {{ contact.phone_number }}</p>
+        <p>Birthday: {{ contact.birthday }}</p>
+        <p> Created: {{ contact.creation_date }}
+        <p> Edited: {{ contact.edition_date }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}

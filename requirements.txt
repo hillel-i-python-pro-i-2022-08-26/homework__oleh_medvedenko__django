@@ -16,4 +16,8 @@ pyupgrade==2.38.0
 black==22.8.0
 # Check codestyle
 flake8==5.0.4
+# forms rendering
+django-crispy-forms~=1.14.0
+# filesystem paths
+pathlib~=1.0.1
 # [code_style]-[END]
