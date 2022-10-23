@@ -14,7 +14,7 @@ class Group(models.Model):
 class Contacts(models.Model):
     name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
-    birthday = models.CharField(max_length=255)
+    birthday = models.DateField(max_length=255)
 
     is_auto_generated = models.BooleanField(default=False)
 
