@@ -1,7 +1,8 @@
 .PHONY: d-homework-i-run
 # Make all actions needed for run homework from zero.
 d-homework-i-run:
-	@make init-config && \
+	@make init-dev && \
+		make init-config && \
 		make d-run
 
 .PHONY: d-homework-i-purge
