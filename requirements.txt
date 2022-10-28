@@ -1,5 +1,5 @@
 # Core
-django==4.1.1
+django==4.1.2
 
 # Name generating
 faker==15.0.0
