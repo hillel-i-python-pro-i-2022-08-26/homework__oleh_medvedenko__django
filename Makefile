@@ -19,6 +19,13 @@ d-run:
 		docker-compose \
 			up --build
 
+.PHONY: d-run-i-local-dev
+# Just run
+d-run-i-local-dev:
+	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
+		COMPOSE_PROFILES=local_dev \
+		docker-compose \
+			up --build
 
 .PHONY: d-purge
 # Purge all data related with services
@@ -32,7 +39,7 @@ d-purge:
 .PHONY: homework-i-run
 # Run homework.
 homework-i-run:
-	@python3 manage.py runserver
+	@python manage.py runserver
 
 .PHONY: homework-i-purge
 # Delete all created artifacts, related with homework execution
@@ -43,7 +50,8 @@ homework-i-purge:
 .PHONY: init-config
 # Init config files
 init-config:
-	@cp docker-compose.override.dev.yml docker-compose.override.yml
+	@cp docker-compose.override.dev.yml docker-compose.override.yml && \
+		cp .env.example .env
 
 .PHONY: init-dev
 # Init environment for development
