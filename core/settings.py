@@ -26,6 +26,14 @@ SECRET_KEY = "django-insecure-1o*(dw#(1p_rfe7y!f$a=+j^*_t&q#$n(z(p5d_d1u6qt0&))b
 DEBUG = True
 
 ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS.extend(
+        [
+            "0.0.0.0",
+        ]
+    )
+
+AUTH_USER_MODEL = "admin_user.CustomUser"
 
 # Application definition
 
@@ -38,13 +46,24 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-LOCAL_APPS = [
-    "apps.base.apps.DjangoTaskConfig",
-]
+LOCAL_APPS = ["apps.base.apps.DjangoTaskConfig", "apps.users.services"]
 
 THIRD_PARTY_APPS = []
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "apps.contacts",
+    "apps.users",
+    "apps.base",
+    "apps.admin_user",
+    "apps.sessions_app",
+    "crispy_forms",
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -82,7 +101,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR.joinpath("db", "db.sqlite3"),
     }
 }
 
@@ -124,3 +143,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
