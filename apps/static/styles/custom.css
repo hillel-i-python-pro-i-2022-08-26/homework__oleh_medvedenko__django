@@ -5,7 +5,7 @@ body {
 }
 
 .background {
-    background: url("../background.gif") fixed center;
+    background: url("../background.gif") no-repeat fixed center;
 }
 
 .overlay {
