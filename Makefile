@@ -39,7 +39,7 @@ d-purge:
 .PHONY: homework-i-run
 # Run homework.
 homework-i-run:
-	@python manage.py runserver
+	@python3 manage.py runserver
 
 .PHONY: homework-i-purge
 # Delete all created artifacts, related with homework execution
@@ -50,8 +50,8 @@ homework-i-purge:
 .PHONY: init-config
 # Init config files
 init-config:
-	@cp docker-compose.override.dev.yml docker-compose.override.yml && \
-		cp .env.example .env
+	@cp docker-compose.override.dev.yml docker-compose.override.yml
+		#cp .env.example .env
 
 .PHONY: init-dev
 # Init environment for development
@@ -72,7 +72,6 @@ pre-commit-run-all:
 	@pre-commit run --all-files
 
 
-
 .PHONY: migrations
 # Make migrations
 migrations:
@@ -90,4 +89,4 @@ init-dev-i-create-superuser:
 
 .PHONY: util-i-kill-by-port
 util-i-kill-by-port:
-	@sudo lsof -i:8000 -Fp | head -n 1 | sed 's/^p//' | xargs sudo kill
+	@sudo lsof -i:5432 -Fp | head -n 1 | sed 's/^p//' | xargs sudo kill

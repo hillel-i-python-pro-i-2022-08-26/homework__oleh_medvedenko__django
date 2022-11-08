@@ -36,9 +36,12 @@ if DEBUG:
             "0.0.0.0",
             "127.0.0.1",
             "localhost",
+            "192.168.0.104",
         ]
     )
+
 AUTH_USER_MODEL = "admin_user.CustomUser"
+ROOT_URLCONF = "core.urls"
 
 # Application definition
 
@@ -70,6 +73,9 @@ INSTALLED_APPS = [
     "crispy_forms",
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -79,8 +85,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
@@ -145,11 +149,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "apps/static/"
+STATIC_URL = "static/"
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    APPS_DIR.joinpath("static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-CRISPY_TEMPLATE_PACK = "bootstrap4"

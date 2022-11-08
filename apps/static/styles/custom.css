@@ -1,0 +1,31 @@
+body {
+    font-family: 'Arial', serif;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5em;
+}
+
+.background {
+    background: url("../background.gif") fixed center;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.bg-dark {
+    --bs-bg-opacity: 0.3;
+}
+
+.my-header {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 2em;
+    height: 2em;
+}
+

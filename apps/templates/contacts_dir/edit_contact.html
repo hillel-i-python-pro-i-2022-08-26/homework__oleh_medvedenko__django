@@ -2,18 +2,22 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-<style>
-div {
-  margin: auto;
-}
-</style>
-<div>
-    <h1>{{ title }}</h1>
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center align-items-center p-3">
+            <h1>{{ title }}</h1>
 
-        <form method="POST" autocomplete="off" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            {% crispy form %}
-        </form>
-</div>
+            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="d-flex flex-column justify-content-center align-items-center text-center">
+                    {{ form.non_field_errors }}
+                    {{ form.name|as_crispy_field }}
+                    {{ form.phone_number|as_crispy_field }}
+                    {{ form.birthday|as_crispy_field }}
+                    <div class="p-3">
+                        <button type="submit" class="btn btn-primary shadow-sm">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}

@@ -1,22 +1,22 @@
 {% extends 'index.html' %}
 
 {% block body %}
-    <a href="{% url 'contacts_app:create' %}"><h4>Add User</h4></a>
-    <hr>
     {% for contact in contacts %}
         <p>Name: {{ contact.name }}.</p>
         <p>Number: {{ contact.phone_number }}</p>
         <p>Birthday: {{ contact.birthday }}</p>
         <p>Created: {{ contact.creation_date }}
         <p>Edited: {{ contact.edition_date }}</p>
-        <form action="{% url "contacts_app:update" contact.pk %}" method="post">
+        <div class="d-flex">
+        <form class="me-3" action="{% url "contacts_app:update" contact.pk %}" method="post">
             {% csrf_token %}
-            <input type="submit" value="Edit">
+            <input class="btn btn-primary shadow-sm" type="submit" value="Edit">
         </form>
-        <p><form action="{% url "contacts_app:delete" contact.pk %}" method="post">
+        <form class="me-3" action="{% url "contacts_app:delete" contact.pk %}" method="post">
             {% csrf_token %}
-            <input type="submit" value="Delete">
+            <input class="btn btn-primary shadow-sm" type="submit" value="Delete">
         </form>
+        </div>
         <hr>
     {% endfor %}
 {% endblock %}
