@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.urls import reverse
 
@@ -11,15 +13,27 @@ class Group(models.Model):
     __repr__ = __str__
 
 
+def get_icon_path(instance, filename: str) -> str:
+    _, extension = filename.rsplit(".", maxsplit=1)
+    return f"contacts/contact/image/{instance.pk}/{uuid.uuid4()}/image.{extension}"
+
+
 class Contacts(models.Model):
-    name = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=255)
-    birthday = models.DateField(max_length=255)
+    name = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=20)
+    birthday = models.DateField(null=True, blank=True, default=None)
 
     is_auto_generated = models.BooleanField(default=False)
 
     creation_date = models.DateTimeField(auto_now_add=True)
     edition_date = models.DateTimeField(auto_now=True)
+
+    image = models.ImageField(
+        max_length=255,
+        blank=True,
+        null=True,
+        upload_to=get_icon_path,
+    )
 
     group = models.ForeignKey(
         Group,
@@ -33,11 +47,9 @@ class Contacts(models.Model):
     def get_absolute_url(self):
         return reverse("post", kwargs={"post_id": self.pk})
 
-    class Meta:
-        verbose_name = "Contact"
-        verbose_name_plural = "Contacts"
-
     def __str__(self) -> str:
-        return "\n".join(f"{self.name}{self.phone_number}{self.birthday}{self.creation_date}{self.edition_date}")
+        return "\n".join(
+            f"{self.name}{self.phone_number}{self.birthday}{self.image}" f"{self.creation_date}{self.edition_date}"
+        )
 
     __repr__ = __str__

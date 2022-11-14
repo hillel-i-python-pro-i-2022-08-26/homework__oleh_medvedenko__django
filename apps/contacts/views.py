@@ -1,21 +1,31 @@
-from django.contrib import messages
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DeleteView
 
 from .forms import ContactsForm
 from .models import Contacts
 
 
-def get_contacts(request: HttpRequest) -> HttpResponse:
-    contacts = Contacts.objects.order_by("-creation_date")
-    return render(
-        request,
-        "contacts_dir/show_contacts.html",
-        {
-            "contacts": contacts,
-            "title": "Contacts",
-        },
-    )
+# def get_contacts(request: HttpRequest) -> HttpResponse:
+#     contacts = Contacts.objects.order_by("-creation_date")
+#     return render(
+#         request,
+#         "contacts/contacts_list.html",
+#         {
+#             "contacts": contacts,
+#             "title": "Contacts",
+#         },
+#     )
+
+
+class ArticleListView(ListView):
+    model = Contacts
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Contacts"
+        return context
 
 
 def create_contact(request: HttpRequest) -> HttpResponse:
@@ -26,7 +36,7 @@ def create_contact(request: HttpRequest) -> HttpResponse:
             return redirect("contacts_app:show_contacts")
     else:
         form = ContactsForm()
-    return render(request, "contacts_dir/edit_contact.html", {"title": "Create a contact", "form": form})
+    return render(request, "contacts/edit_contact.html", {"title": "Create a contact", "form": form})
 
 
 def update_contact(request: HttpRequest, pk) -> HttpResponse | HttpResponseRedirect:
@@ -41,7 +51,7 @@ def update_contact(request: HttpRequest, pk) -> HttpResponse | HttpResponseRedir
             form = ContactsForm(instance=contact)
         return render(
             request,
-            "contacts_dir/edit_contact.html",
+            "contacts/edit_contact.html",
             {
                 "form": form,
                 "title": "Edit contacts",
@@ -49,8 +59,6 @@ def update_contact(request: HttpRequest, pk) -> HttpResponse | HttpResponseRedir
         )
 
 
-def delete_contact(request: HttpRequest, pk):
-    contacts = Contacts.objects.get(pk=pk)
-    contacts.delete()
-    messages.success(request, f"User {contacts.name} deleted.")
-    return redirect("contacts_app:show_contacts")
+class ContactDeleteView(DeleteView):
+    model = Contacts
+    success_url = reverse_lazy("contacts_app:show_contacts")

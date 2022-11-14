@@ -22,6 +22,7 @@ class ContactsForm(forms.ModelForm):
             "name",
             "phone_number",
             "birthday",
+            "image",
         )
 
         widgets = {

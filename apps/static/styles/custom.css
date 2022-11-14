@@ -5,7 +5,7 @@ body {
 }
 
 .background {
-    background: url("../background.gif") no-repeat fixed center;
+    background: url("../images/racoon.jpg") no-repeat fixed center/cover;
 }
 
 .overlay {
@@ -13,7 +13,7 @@ body {
 }
 
 .bg-dark {
-    --bs-bg-opacity: 0.3;
+    --bs-bg-opacity: 0.5;
 }
 
 .my-header {
@@ -29,3 +29,6 @@ body {
     height: 2em;
 }
 
+.table {
+    --bs-table-color: rgba(255, 255, 255, 0.9);
+}

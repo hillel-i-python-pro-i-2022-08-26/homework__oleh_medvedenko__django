@@ -26,3 +26,9 @@ pathlib~=1.0.1
 django-environ==0.9.0
 # For DB connection.
 psycopg2-binary==2.9.5
+
+pillow==9.3.0
+
+crispy-bootstrap5==0.7
+
+environ~=1.0

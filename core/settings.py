@@ -71,10 +71,11 @@ INSTALLED_APPS = [
     "apps.admin_user",
     "apps.sessions_app",
     "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -97,6 +98,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -156,6 +158,9 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
     APPS_DIR.joinpath("static"),
 ]
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR.joinpath("media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
