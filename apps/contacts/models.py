@@ -1,7 +1,7 @@
 import uuid
 
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 
 class Group(models.Model):
@@ -22,12 +22,9 @@ class Contacts(models.Model):
     name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=20)
     birthday = models.DateField(null=True, blank=True, default=None)
-
     is_auto_generated = models.BooleanField(default=False)
-
     creation_date = models.DateTimeField(auto_now_add=True)
     edition_date = models.DateTimeField(auto_now=True)
-
     image = models.ImageField(
         max_length=255,
         blank=True,
@@ -45,7 +42,10 @@ class Contacts(models.Model):
     )
 
     def get_absolute_url(self):
-        return reverse("post", kwargs={"post_id": self.pk})
+        return reverse_lazy("post", kwargs={"post_id": self.pk})
+
+    def get_update_url(self):
+        return reverse_lazy("contacts:update_contact", kwargs={"pk": self.pk})
 
     def __str__(self) -> str:
         return "\n".join(

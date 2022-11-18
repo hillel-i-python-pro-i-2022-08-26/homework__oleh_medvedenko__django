@@ -7,6 +7,7 @@
                 <table class="table table-borderless">
                     <thead>
                     <tr>
+                        <th scope="col">Avatar</th>
                         <th scope="col">Name</th>
                         <th scope="col">Number</th>
                         <th scope="col">Birthday</th>
@@ -29,12 +30,12 @@
                             <td>{{ contact.creation_date }}</td>
                             <td>{{ contact.edition_date }}</td>
                             <td class="d-flex">
-                                <form class="me-3" action="{% url "contacts_app:update" contact.pk %}" method="post">
+                                <form class="me-3" action="{% url "contacts_app:update_contact" contact.pk %}" method="get">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen"></i>
                                     </button>
                                 </form>
-                                <form class="me-3" action="{% url "contacts_app:delete" contact.pk %}" method="post">
+                                <form class="me-3" action="{% url "contacts_app:delete_contact" contact.pk %}" method="post">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i>
                                     </button>

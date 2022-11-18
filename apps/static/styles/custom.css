@@ -32,3 +32,7 @@ body {
 .table {
     --bs-table-color: rgba(255, 255, 255, 0.9);
 }
+
+.contact-image {
+    max-width: 3em;
+}
