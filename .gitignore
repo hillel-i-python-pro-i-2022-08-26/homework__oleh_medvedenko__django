@@ -2,3 +2,4 @@ venv
 db.sqlite3
 .idea
 docker-compose.override.yml
+media/contacts/
