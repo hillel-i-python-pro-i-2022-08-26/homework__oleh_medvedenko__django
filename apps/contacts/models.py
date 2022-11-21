@@ -53,3 +53,8 @@ class Contacts(models.Model):
         )
 
     __repr__ = __str__
+
+    class Meta:
+        ordering = ["-creation_date"]
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"

@@ -1,11 +1,12 @@
-{% extends 'index.html' %}
+{% extends 'index.html' %} &nbsp;
 {% load crispy_forms_tags %}
 {% load crispy_forms_filters %}
 
 {% block body %}
     <div class="container">
         <div class="d-flex flex-column justify-content-center align-items-center p-3">
-            <h1>{{ title }}</h1>
+            <h2>Login</h2>
+            <p>
 
             <form method="POST" autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -15,10 +16,10 @@
                         {{ form | crispy }}
                     </div>
                     <div class="p-3">
-                        <button type="submit" class="btn btn-warning shadow-sm">Submit</button>
+                        <button type="submit" class="btn btn-warning shadow-sm">Login</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-{% endblock %}
+{% endblock body %}

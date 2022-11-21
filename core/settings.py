@@ -40,7 +40,7 @@ if DEBUG:
         ]
     )
 
-AUTH_USER_MODEL = "admin_user.CustomUser"
+AUTH_USER_MODEL = "accounts.User"
 ROOT_URLCONF = "core.urls"
 
 # Application definition
@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     "apps.contacts",
     "apps.users",
     "apps.base",
-    "apps.admin_user",
+    "apps.accounts",
     "apps.sessions_app",
     "crispy_forms",
     "crispy_bootstrap5",
@@ -166,3 +166,5 @@ MEDIA_ROOT = BASE_DIR.joinpath("media")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "base_app:main_page"
