@@ -3,3 +3,4 @@ db.sqlite3
 .idea
 docker-compose.override.yml
 media/contacts/
+/media/users/
