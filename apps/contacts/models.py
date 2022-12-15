@@ -48,11 +48,7 @@ class Contacts(models.Model):
         return reverse_lazy("contacts:update_contact", kwargs={"pk": self.pk})
 
     def __str__(self) -> str:
-        return "\n".join(
-            f"{self.name}{self.phone_number}{self.birthday}{self.image}" f"{self.creation_date}{self.edition_date}"
-        )
-
-    __repr__ = __str__
+        return "\n".join(f"{self.name}")
 
     class Meta:
         ordering = ["-creation_date"]

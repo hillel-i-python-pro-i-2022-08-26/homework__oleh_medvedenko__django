@@ -47,6 +47,8 @@ body {
 
 textarea:focus,
 input[type="text"]:focus,
+input[type="file"]:focus,
+input[type="image"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
@@ -61,12 +63,42 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: rgba(255, 193, 7, 0.8);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 193, 7, 0.6);
-  outline: 0 none;
+    border-color: rgba(255, 193, 7, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 193, 7, 0.6);
+    outline: 0 none;
 }
 
-.dropdown-menu-dark{
+.dropdown-item {
+    transition: 0.15s;
+}
+
+.dropdown-menu-dark {
     --bs-dropdown-link-active-bg: rgb(255, 193, 7);
     --bs-dropdown-link-hover-color: rgb(255, 193, 7);
+    ;
+}
+
+.nav {
+    --bs-nav-link-color: rgba(255, 193, 7, 0.8);
+    --bs-nav-link-hover-color: rgba(255, 193, 7);
+}
+
+@media(min-width: 768px) {
+    .show-mobile {
+        display: none;
+    }
+
+    .hide-mobile {
+        display: block;
+    }
+}
+
+@media(max-width: 767px) {
+    .show-mobile {
+        display: block;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
 }

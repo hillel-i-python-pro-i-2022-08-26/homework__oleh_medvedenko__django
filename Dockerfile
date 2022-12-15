@@ -26,6 +26,7 @@ COPY --chown=${USER} ./core core
 COPY --chown=${USER} ./Makefile Makefile
 COPY --chown=${USER} ./manage.py manage.py
 
+
 USER ${USER}
 
 EXPOSE 8000

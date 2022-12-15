@@ -36,7 +36,7 @@ if DEBUG:
             "0.0.0.0",
             "127.0.0.1",
             "localhost",
-            "192.168.0.104",
+            "192.168.0.102",
         ]
     )
 
@@ -86,6 +86,11 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+INIT_CUSTOM_MIDDLEWARE = True
+
+if INIT_CUSTOM_MIDDLEWARE:
+    MIDDLEWARE += ["apps.sessions_app.middleware.LoggingMiddleware"]
 
 TEMPLATES = [
     {
