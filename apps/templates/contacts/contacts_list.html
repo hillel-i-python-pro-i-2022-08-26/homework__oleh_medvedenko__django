@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <div class="hide-mobile">
+        <div class="container" style="padding: 2rem ;">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col">Avatar</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Birthday</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">Edited at</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for contact in object_list %}
+                            <tr>
+                                <td>
+                                    {% if contact.image %}
+                                        <img class="contact-image" src="{{ contact.image.url }}"
+                                             alt="{{ contact.name }}"/>
+                                    {% endif %}
+                                </td>
+                                <td>{{ contact.name }}</td>
+                                <td>{{ contact.phone_number }}</td>
+                                <td>{{ contact.birthday }}</td>
+                                <td>{{ contact.creation_date }}</td>
+                                <td>{{ contact.edition_date }}</td>
+                                <td class="d-flex">
+                                    <form class="me-3" action="{% url "contacts_app:update_contact" contact.pk %}"
+                                          method="get">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </form>
+                                    <form class="me-3" action="{% url "contacts_app:delete_contact" contact.pk %}"
+                                          method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="show-mobile">
+        {% for contact in object_list %}
+            {% if contact.image %}
+                <img class="contact-image" src="{{ contact.image.url }}"
+                     alt="{{ contact.name }}"/>
+            {% endif %}
+            <p>Name: {{ contact.name }}</p>
+            <p>Number: {{ contact.phone_number }}</p>
+            <p>Birthday: {{ contact.birthday }}</p>
+            <p>Created: {{ contact.creation_date }}
+            <p>Edited: {{ contact.edition_date }}</p>
+            <div class="d-flex">
+                <form class="me-3" action="{% url "contacts_app:update_contact" contact.pk %}" method="get">
+                    {% csrf_token %}
+                    <input class="btn btn-warning shadow-sm" type="submit" value="Edit">
+                </form>
+                <form class="me-3" action="{% url "contacts_app:delete_contact" contact.pk %}" method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-danger shadow-sm" type="submit" value="Delete">
+                </form>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<h3>Total count of visits : {{ total_visits }}</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">User</th>
+        <th scope="col">Session key</th>
+        <th scope="col">Path</th>
+        <th scope="col">Count of visits</th>
+        <th scope="col">Last visit time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for session in object_list %}
+        <tr>
+            {% if user.is_authenticated %}
+                <td>{{ session.user }}</td>
+            {% else %}
+                <td>Anonymous</td>
+            {% endif %}
+            <td>{{ session.session_key }}</td>
+            <td>{{ session.path }}</td>
+            <td>{{ session.count_of_visits }}</td>
+            <td>{{ session.last_visit_at }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

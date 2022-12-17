@@ -1,0 +1,16 @@
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'sessions_app:all_info' %}">
+            All actions info</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'sessions_app:session_info' request.session.session_key %}">
+            Current session info</a>
+    </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'sessions_app:user_info' user.pk %}">
+                User actions info</a>
+        </li>
+    {% endif %}
+</ul>

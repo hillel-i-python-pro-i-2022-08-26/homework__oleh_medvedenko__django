@@ -1,0 +1,135 @@
+body {
+    font-family: 'Arial', serif;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5em;
+}
+
+.background {
+    background: url("../images/racoon.jpg") no-repeat fixed center/cover;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.bg-dark {
+    --bs-bg-opacity: 0.5;
+}
+
+.my-header {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 2em;
+    height: 2em;
+}
+
+.table {
+    --bs-table-color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-image {
+    max-width: 3em;
+}
+
+.user-avatar {
+    max-width: 2em;
+}
+
+.form-text {
+    color: rgba(255, 193, 7, 0.8);
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="file"]:focus,
+input[type="image"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border-color: rgba(255, 193, 7, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 193, 7, 0.6);
+    outline: 0 none;
+}
+
+.dropdown-item {
+    transition: 0.15s;
+}
+
+.dropdown-menu-dark {
+    --bs-dropdown-link-active-bg: rgb(255, 193, 7);
+    --bs-dropdown-link-hover-color: rgb(255, 193, 7);
+    ;
+}
+
+.nav {
+    --bs-nav-link-color: rgba(255, 193, 7, 0.8);
+    --bs-nav-link-hover-color: rgba(255, 193, 7);
+}
+
+@media(min-width: 768px) {
+    .show-mobile {
+        display: none;
+    }
+
+    .hide-mobile {
+        display: block;
+    }
+}
+
+@media(max-width: 767px) {
+    .show-mobile {
+        display: block;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+}
+
+.tracking-in-expand{
+	-webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation-delay: 1s;
+}
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
