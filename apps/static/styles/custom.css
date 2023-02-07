@@ -35,10 +35,12 @@ body {
 
 .contact-image {
     max-width: 3em;
+    border-radius: 10%;
 }
 
 .user-avatar {
     max-width: 2em;
+    border-radius: 50%;
 }
 
 .form-text {
@@ -74,8 +76,7 @@ input[type="color"]:focus,
 
 .dropdown-menu-dark {
     --bs-dropdown-link-active-bg: rgb(255, 193, 7);
-    --bs-dropdown-link-hover-color: rgb(255, 193, 7);
-    ;
+    --bs-dropdown-link-hover-color: rgb(255, 193, 7);;
 }
 
 .nav {
@@ -83,7 +84,7 @@ input[type="color"]:focus,
     --bs-nav-link-hover-color: rgba(255, 193, 7);
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
     .show-mobile {
         display: none;
     }
@@ -93,7 +94,7 @@ input[type="color"]:focus,
     }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
     .show-mobile {
         display: block;
     }
@@ -103,33 +104,66 @@ input[type="color"]:focus,
     }
 }
 
-.tracking-in-expand{
-	-webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-    animation-delay: 1s;
+.fade-in-top {
+    -webkit-animation: fade-in-top 1s ease-in-out both;
+    animation: fade-in-top 1s ease-in-out both;
+}
+
+@-webkit-keyframes fade-in-top {
+    0% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-top {
+    0% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.tracking-in-expand {
+    -webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation-delay: 1.3s;
 }
 
 @-webkit-keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
 }
+
 @keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
 }
