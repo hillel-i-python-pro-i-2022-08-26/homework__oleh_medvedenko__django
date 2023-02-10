@@ -34,3 +34,5 @@ crispy-bootstrap5==0.7
 environ~=1.0
 
 celery==5.2.7
+
+djangorestframework~=3.14.0
